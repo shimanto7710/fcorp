@@ -2,10 +2,15 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+//    id 'com.google.dagger.hilt.android' version '2.43.2' apply false
+    id 'com.google.dagger.hilt.android'
 //    id 'dagger.hilt.android.plugin'
 //    id 'com.google.gms.google-services'
 //    id 'com.google.firebase.crashlytics'
 }
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     compileSdk 33
@@ -22,16 +27,27 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
 }
 
@@ -70,16 +86,17 @@ dependencies {
     //okttp profiler
     implementation 'com.localebro:okhttpprofiler:1.0.8'
 
-    // hilt
-    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
 
-    // ...with Kotlin.
-    kaptTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
-    implementation("androidx.hilt:hilt-work:$hilt_work_version")
-    kapt("androidx.hilt:hilt-compiler:$hilt_work_version")
+    implementation 'com.google.dagger:hilt-android:2.43.2'
+    annotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
+
+    // For instrumentation tests
+    androidTestImplementation  'com.google.dagger:hilt-android-testing:2.43.2'
+    androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
+
+    // For local unit tests
+    testImplementation 'com.google.dagger:hilt-android-testing:2.43.2'
+    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
 
 
 
