@@ -2,13 +2,13 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-//    id 'com.google.dagger.hilt.android' version '2.43.2' apply false
     id 'com.google.dagger.hilt.android'
 //    id 'dagger.hilt.android.plugin'
 //    id 'com.google.gms.google-services'
 //    id 'com.google.firebase.crashlytics'
 }
 
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.dagger.hilt.android'
 
@@ -63,20 +63,27 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     // AndroidX Test - JVM testing
-    testImplementation "androidx.test.ext:junit-ktx:$androidx_test_ext_kotlin_runner_version"
-    testImplementation "androidx.test:core-ktx:$androidx_test_core_version"
+//    testImplementation "androidx.test.ext:junit-ktx:$androidx_test_ext_kotlin_runner_version"
+//    testImplementation "androidx.test:core-ktx:$androidx_test_core_version"
 
     //coroutines test
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_test_version"
     //coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
     // ViewModel
+//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    def lifecycle_version = "2.4.0"
+//    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     // Kotlin
     implementation "androidx.activity:activity-ktx:$activity_version"
 
+    //fragment
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.google.code.gson:gson:$gson_version"
@@ -90,13 +97,13 @@ dependencies {
     implementation 'com.google.dagger:hilt-android:2.43.2'
     annotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
 
-    // For instrumentation tests
+/*    // For instrumentation tests
     androidTestImplementation  'com.google.dagger:hilt-android-testing:2.43.2'
     androidTestAnnotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
 
     // For local unit tests
     testImplementation 'com.google.dagger:hilt-android-testing:2.43.2'
-    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'
+    testAnnotationProcessor 'com.google.dagger:hilt-compiler:2.43.2'*/
 
 
 

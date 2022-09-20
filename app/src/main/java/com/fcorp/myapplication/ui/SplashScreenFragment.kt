@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fcorp.myapplication.R
+import com.fcorp.myapplication.databinding.FragmentSplashScreenBinding
 
 class SplashScreenFragment : Fragment() {
+
+    private var _binding: FragmentSplashScreenBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,16 +22,14 @@ class SplashScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash_screen, container, false)
+        _binding = FragmentSplashScreenBinding.inflate(layoutInflater)
+
+        return binding.root
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SplashScreenFragment().apply {
-
-            }
+        fun newInstance() =
+            SplashScreenFragment().apply {}
     }
 }

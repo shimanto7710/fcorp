@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ss_app_logo">40dp</dimen>
+    <dimen name="ss_app_title">20sp</dimen>
+    <dimen name="ss_app_version">18sp</dimen>
+
+</resources>
